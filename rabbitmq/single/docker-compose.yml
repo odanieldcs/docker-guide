@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: root
+      RABBITMQ_DEFAULT_PASS: RabbitMQ@2020
+    ports:
+      - 15672:15672
+    volumes:
+      - /users/danielcastro/labs/infra/rabbitmq/single:/var/lib/rabbitmq
