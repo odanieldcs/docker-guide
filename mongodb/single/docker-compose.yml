@@ -1,12 +1,11 @@
-version: "3"
-
+version: "3.1"
 services:
   mongo:
-    image: mongo
+    image: "mongo:4.2"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: MongoDB2019!
     ports:
-      - 27017:27017
+      - 27027:27017
     volumes:
-      - /users/danielcastro/labs/infra/mongodb/db:/data/db
+      - ./data:/data/db
