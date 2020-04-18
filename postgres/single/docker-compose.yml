@@ -1,0 +1,30 @@
+version: "3.1"
+services:
+  database:
+    image: "postgres:12"
+    container_name: "postgres-12"
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "pswd"
+    volumes:
+      - ./data:/var/lib/postgresql/data/
+    ports:
+      - "15432:5432"
+    networks:
+      - postgres-network
+  pgadmin:
+    image: "dpage/pgadmin4"
+    container_name: "pgadmin"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "email@domain.com"
+      PGADMIN_DEFAULT_PASSWORD: "pswdroot"
+    ports:
+      - "16543:80"
+    depends_on:
+      - database
+    networks:
+      - postgres-network
+
+networks:
+  postgres-network:
+    driver: bridge
